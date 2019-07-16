@@ -1,2 +1,3 @@
 Getting Git is legit.
+Continue getting Git.
 
