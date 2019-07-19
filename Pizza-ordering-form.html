@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pizza Spot</title>
+</head>
+<body>
+	<heading>
+		<h1>Pizza Spot</h1>
+		<br>
+		<h3>Place Order Below:</h3>
+		<hr>
+	</heading>
+	<form method="POST" action="https://request-inspector.glitch.me">
+		<section><!--		First Name-->
+			<label for="name1">First Name:</label>
+			<input id="name1" name="first_name" type="text">
+			<br>
+			<!--		Last Name-->
+			<label for="name2">Last Name:</label>
+			<input id="name2" name="last_name" type="text">
+			<br>
+			<!--		Phone Number-->
+			<label for="phone">Phone Number:</label>
+			<input id="phone" name="phone_number" type="text">
+			<br>
+			<!--		Address-->
+			<label for="address">Address:</label>
+			<input id="address" name="address" type="text">
+		</section>
+		<br>
+		<section><!--		Crust Type -->
+			<h3>Select Crust:</h3>
+			<!--		Original Crust-->
+			<label for="original-crust">Original Crust</label>
+			<input id="original-crust" name="crust" value="original-crus" type="radio">
+			<!--		Garlic Crust-->
+			<label for="garlic-crust">Garlic Crust</label>
+			<input id="garlic-crust" name="crust" value="garlic-crust" type="radio">
+			<!--Parmesan Crust-->
+			<label for="parmesan-crust">Parmesan Crust</label>
+			<input id="parmesan-crust" name="crust" value="parmesan-crust" type="radio">
+		</section>
+
+
+
+		<br>
+		<input type="submit">
+	</form>
+
+
+</body>
+</html>

@@ -1,3 +1,85 @@
+body {
+    /*background-color: aliceblue;*/
+    background-image: url("../img/Digital_Water.jpg");
+    background-size: cover;
+    opacity: 80%;
+    font-family: 'Nanum Gothic', sans-serif;
+
+}
+
 .fancy-header {
-    color: purple;
+    text-align: center;
+}
+
+h1, h3 {
+    color: blue;
+    text-decoration: underline;
+    font-family: 'Oswald', sans-serif;
+}
+ul {
+    list-style-type: square;
+}
+
+/*Table styles*/
+
+table {
+    width: 100%;
+}
+
+th {
+    background-color: dodgerblue;
+}
+
+td {
+    padding: 15px;
+    align: left;
+
+
+}
+tr {
+    font-family: 'Poppins', sans-serif;
+
+
+
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+th, tr, td{
+    border: 1px solid black;
+
+
+}
+
+a:link {
+font-size: 16px;
+color: blue;
+}
+
+a:visited {
+font-size: 20px;
+color: dodgerblue;
+}
+
+a:hover {
+font-size: 20px;
+color: lightseagreen;
+cursor:pointer;
+}
+
+a:active {
+font-size: 20px;
+color: indianred;
+    }
+
+#go-up-button {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    background-color: #ddd;
+    background-color: rgba(87, 87, 87, 0.7);
+    border-radius:100%;
+    opacity: 75%;
 }
