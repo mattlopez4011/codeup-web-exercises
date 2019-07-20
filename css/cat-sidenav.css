@@ -1,0 +1,47 @@
+body, html {
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --bg-black: #000000;
+}
+
+aside {
+    width: 20%;
+    height: 95vh;
+    background-color: var(--bg-black);
+    color: white;
+    display: block;
+    border: .5px solid lightgrey;
+}
+
+.cat-pic {
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+    padding: 13px 0;
+}
+
+h2 {
+    text-align: center;
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.hr-line {
+    border: .5px solid lightgrey;
+    margin: 25px 0;
+}
+
+.side-item-nav {
+    list-style-type: none;
+    padding: 0;
+
+}
+
+.side-item-nav li {
+    padding: 12.5px 10px;
+
+
+}
