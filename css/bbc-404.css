@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+:root {
+    --main-color: #333333;
+}
+
+nav {
+    height: 40px;
+    width: 100%;
+    background-color: var(--main-color);
+    position: fixed;
+
+}
+
+.nav-container {
+    margin: 0 auto;
+    padding: 0;
+    display: inline-block;
+    position: fixed;
+
+}
+
+/*BBC logo in the nav bar*/
+.bbc-logo {
+    height: 30px;
+    margin: 5px;
+}
+
+.hr {
+    border-left: 1px solid white;
+    height: 40px;
+    display: inline-block;
+}
+
+.fa-user-circle {
+    color: white;
+    display: inline-block;
+    position: relative;
+    top: -18px;
+    padding: 0 10px;
+
+}
+
+.sign-in {
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    top: -18px;
+    padding-right: 80px;
+    color: white;
+    font-weight: bold;
+
+}
+
+.news, .sports, .weather, .iPlayer, .TV, .radio, .more{
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    top: -18px;
+    padding: 0 10px;
+    color: white;
+    font-weight: bold;
+
+}
+
+.search {
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    top: -18px;
+    padding: 0 10px;
+    color: var(--main-color);
+    font-weight: bold;
+    height: 18px;
+    width: 200px;
+    margin-left: 10px;
+
+}
+::placeholder {
+    color: var(--main-color);
+    opacity: 1;
+}
