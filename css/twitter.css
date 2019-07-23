@@ -38,11 +38,16 @@ a {
 
 
 }
+
+.nav-item{
+    display: inline-block;
+    padding: 1.5em;
+}
+
 .nav-link {
     color: var(--main-link-color);
     font-weight: bold;
     text-decoration: none;
-    padding: 1.5em;
     float: left;
 
 }
@@ -69,7 +74,7 @@ a {
 
 .profile-image {
     position: absolute;
-    top: 235px;
+    top: 240px;
 }
 .img-circle {
     border-radius: 100%;
