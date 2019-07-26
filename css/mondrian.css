@@ -19,8 +19,10 @@ main {
     background-color: black;
     width: 500px;
     height: 500px;
-    border: black solid .5em;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.2),0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: .5em;
+    border: white solid .5em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
 }
 
 .blue1 {
