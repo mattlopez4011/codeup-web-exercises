@@ -1,0 +1,84 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 30% 1fr 1fr 20%;
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 1em;
+    height: 100vh;
+
+}
+
+.box1 {
+    background-color: gold;
+    color: white;
+    font-size: 50px;
+    grid-area: 1/1/2/5;
+}
+
+.box2 {
+     background-color: gold;
+     color: white;
+     font-size: 50px;
+     grid-area: 2/1/6/2;
+ }
+
+.box3 {
+    background-color: gold;
+    color: white;
+    font-size: 50px;
+    grid-area: 2/2/3/3;
+}
+
+.box4 {
+    background-color: gold;
+    color: white;
+    font-size: 50px;
+    grid-area: 2/3/3/5;
+}
+
+.box5 {
+    background-color: gold;
+    color: white;
+    font-size: 50px;
+    grid-area: 3/2/4/4;
+}
+
+.box6 {
+    background-color: gold;
+    color: white;
+    font-size: 50px;
+    grid-area: 3/4/4/5;
+}
+
+.box7 {
+    background-color: gold;
+    color: white;
+    font-size: 50px;
+    grid-area: 4/2/5/3;
+}
+
+.box8 {
+    background-color: gold;
+    color: white;
+    font-size: 50px;
+    grid-area: 4/3/5/4;
+}
+
+.box9 {
+    background-color: gold;
+    color: white;
+    font-size: 50px;
+    grid-area: 4/4/5/5;
+}
+
+.box10 {
+    background-color: gold;
+    color: white;
+    font-size: 50px;
+    grid-area: 5/2/6/5;
+}
