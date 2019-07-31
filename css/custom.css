@@ -1,0 +1,41 @@
+
+
+
+
+.jumbotron{
+    background-image: url("../img/pizza.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.jumbotron h1{
+    z-index: 1;
+    width: 100%;
+    background-color: rgba(255,255,255,0.50);
+    color: rgba(0,0,0,0.50);
+
+
+}
+
+.nav-item a{
+    padding: 15px 10px;
+}
+
+
+.hr{
+    border-top: 1px solid lightgray;
+    margin: 15px 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.card-footer input{
+    background: none;
+    border: none;
+    color: white;
+    padding: 0;
+
+
+}
+
