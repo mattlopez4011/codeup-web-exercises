@@ -12,7 +12,7 @@ console.log("Great," + " " + userInput + " " + 'is my favorite color too!');
 var littleMermaidDaysRented = prompt("How many days did you rent the Little Mermaid?");
 var brotherBearDaysRented = prompt("How many days did you rent the Brother Bear?");
 var herculesDaysRented = prompt("How many days did you rent the Hercules?");
-var dailyRentalRateDollars = 3;
+var dailyRentalRateDollars = prompt("How much was the daily rental rate?");
 
 var totalRentalCost = (Number(littleMermaidDaysRented) + Number(brotherBearDaysRented) + Number(herculesDaysRented)) * Number(dailyRentalRateDollars);
 
