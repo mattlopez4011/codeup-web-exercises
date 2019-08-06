@@ -16,7 +16,7 @@ var dailyRentalRateDollars = prompt("How much was the daily rental rate?");
 
 var totalRentalCost = (Number(littleMermaidDaysRented) + Number(brotherBearDaysRented) + Number(herculesDaysRented)) * Number(dailyRentalRateDollars);
 
-alert("Your total balance is" + "" + "$"+ totalRentalCost );
+alert("Your total balance is" + "" + "$"+ totalRentalCost.toFixed(2) );
 
 
 // ** Rate Calculations Word Problem
@@ -35,9 +35,9 @@ var totalPayandHoursFacebook = "Total weekly pay from Facebook:" + " "+ "$" + fa
 alert(totalPayandHoursGoogle + "\n" + totalPayandHoursAmazon + "\n" + totalPayandHoursFacebook);
 
 // ** Enrolling students Word Problem
-var classStatus = confirm("Is your class full?");
-var scheduleConflicts = confirm("Do you have any class schedule conflicts?");
-var admissionStatus = (classStatus) && (scheduleConflicts);
+var classStatus = confirm("Class is not full?");
+var scheduleConflicts = confirm("You do not have any class schedule conflicts?");
+var admissionStatus = (classStatus && scheduleConflicts);
 
 alert("Have you been accepted into the program? " + admissionStatus);
 
