@@ -25,8 +25,8 @@ function sayHello(name) {
  */
 
 
-var helloMessage = sayHello("Matt");
-console.log(helloMessage);
+// var helloMessage = sayHello("Matt");
+// console.log(helloMessage);
 
 
 /**
@@ -36,8 +36,8 @@ console.log(helloMessage);
  * console.
  */
 
-var myName = "Matt L";
-sayHello(myName);
+// var myName = "Matt L";
+// sayHello(myName);
 
 // Don't modify the following line, it generates a random number between 1 and 3
 // and stores it in a variable named random
@@ -61,11 +61,11 @@ var random = Math.floor((Math.random() * 3) + 1);
  * number)
  */
 
-function isTwo(num) {
-    return num === 2
-}
-
-console.log(isTwo(random), random);
+// function isTwo(num) {
+//     return num === 2
+// }
+//
+// console.log(isTwo(random), random);
 
 /**
  * TODO:
@@ -79,15 +79,15 @@ console.log(isTwo(random), random);
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
 
-function calculateTip(tipPercentage, totalBill) {
-    var billWithCalcTip = (tipPercentage / 100) * totalBill;
-    return Number(billWithCalcTip.toFixed(2));
-    // return "Your " + tipPercentage + "%" + " tip of total bill " + "$" + totalBill.toFixed(2) + " is: " + "$" + billPlusTipTotal.toFixed(2);
-    // return typeof billPlusTipTotal;
-
-}
-
-console.log(calculateTip(15, 120.95));
+// function calculateTip(tipPercentage, totalBill) {
+//     var billWithCalcTip = (tipPercentage / 100) * totalBill;
+//     return Number(billWithCalcTip.toFixed(2));
+//     // return "Your " + tipPercentage + "%" + " tip of total bill " + "$" + totalBill.toFixed(2) + " is: " + "$" + billPlusTipTotal.toFixed(2);
+//     // return typeof billPlusTipTotal;
+//
+// }
+//
+// console.log(calculateTip(15, 120.95));
 
 
 /**
@@ -97,17 +97,16 @@ console.log(calculateTip(15, 120.95));
  * then display the dollar amount they should tip
  */
 
-var userTotalBill = Number(prompt("How much is your total bill?"));
-var userTipPercentage = Number(prompt("What percentage would you like to tip?"));
+// var userTotalBill = Number(prompt("How much is your total bill?"));
+// var userTipPercentage = Number(prompt("What percentage would you like to tip?"));
+// //
+// var tipAmount = calculateTip(userTipPercentage, userTotalBill);
 //
-var tipAmount = calculateTip(userTipPercentage, userTotalBill);
-// var tipAmount = calculateTip();
-
-console.log(typeof userTipPercentage);
-console.log(tipAmount);
-
-// alert("Your " + userTipPercentage + "%" + " " + "tip is:" + " " + calculateTip(userTipPercentage, userTotalBill));
-alert("Your " + userTipPercentage + "%" + " " + "tip is:" + " " + tipAmount);
+//
+// console.log(typeof userTipPercentage);
+// console.log(tipAmount);
+//
+// alert("Your " + userTipPercentage + "%" + " " + "tip is:" + " " + tipAmount);
 
 
 
@@ -128,15 +127,122 @@ alert("Your " + userTipPercentage + "%" + " " + "tip is:" + " " + tipAmount);
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
 
-function applyDiscount(originalPrice, discountPercent) {
-    return  originalPrice - (discountPercent  * originalPrice)
+// function applyDiscount(originalPrice, discountPercent) {
+//     return  originalPrice - (discountPercent  * originalPrice)
+// }
+//
+// console.log(applyDiscount(100, .2));
+
+
+
+
+/////Bonus Function Drills
+
+// Make a function named isOdd(number)
+// function isOdd(random){
+//     return random % 2 == 1
+// }
+//
+// console.log(" is " + random + " odd? "  + isOdd(random));
+
+// Make a function named isEven(number)
+// function isEven(random){
+//     return random % 2 == 0
+// }
+//
+// console.log(" is " + random + " even? "  + isEven(random));
+
+// Make a function named identity(input) that returns the input exactly as provided.
+// function identity(input) {
+//     return input
+//
+// }
+//
+// console.log(identity(random));
+
+// Make a function named isFive(input)
+// function isFive(input) {
+//
+// }
+
+// Make a function named addFive(input) that adds five to some input.
+// function addFive(input) {
+//     return 5 + input
+// }
+//
+// console.log(addFive(random));
+
+// *Make a function named isMultipleOfFive(input)
+// function isMultipleOfFive(input) {
+//     return input % 5 == 0
+// }
+//
+// console.log(isMultipleOfFive(22));
+
+// *Make a function named isThree(input)
+// function isThree(input) {
+//
+// }
+
+// *Make a function named isMultipleOfThree(input)
+// function isMultipleOfThree(input) {
+//     return input % 3 == 0
+// }
+//
+// console.log(isMultipleOfThree(5));
+
+// *Make a function named isMultipleOfThreeAndFive(input)
+// function isMultipleOfThreeAndFive(input) {
+//     return input % 3 == 0 && input % 5 == 0
+//
+// }
+//
+// console.log(isMultipleOfThreeAndFive(15));
+
+// *Make a function named isMultipleOf(target, n) which checks if target is evenly divisible by n
+// function isMultipleOf(target, n) {
+//     return n % target  == 0
+//
+// }
+//
+// console.log(isMultipleOf(5, 15));
+
+// *Make a function named isTrue(boolean)
+// function isTrue(boolean) {
+//     return boolean === true
+//
+// }
+//
+// console.log(isTrue(true));
+
+// Make a function named isFalse(boolean)
+// function isFalse(boolean) {
+//     return boolean === 150
+//
+// }
+//
+// console.log(isFalse(10));
+
+// *Make a function named isTruthy(input), remember that values other than true will behave like true
+function isTruthy(input) {
+    return !!input === 0
+
 }
 
-console.log(applyDiscount(100, .2));
+console.log(isTruthy(true));
 
-// var  priceAfterDiscount = applyDiscount(100, .2);
-//
-// alert("Total bill after discount is:" + " " + "$" + priceAfterDiscount);
+
+
+
+
+
+
+
+ 
+
+
+
+
 
 
 
