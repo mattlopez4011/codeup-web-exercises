@@ -54,46 +54,58 @@ function askUserForNumber() {
 // askUserForNumber();
 
 
-// === Refactored code ===
-var askForNumber = confirm("Would you like to enter a number?");
+// ======= Refactored code =======
+// var askForNumber = confirm("Would you like to enter a number?");
+// askUserForNumber(askForNumber);
+askUser();
 
 
-function askUserForNumber(userInput) {
-    if(userInput === true){
-        return Number(prompt("Enter your number here"));
+function askUser() {
+    var askForNumber = confirm("Would you like to enter a number?");
+    if(askForNumber === true){
+        var userNumber = +prompt("Enter your number here");
+        isNumberEvenOrOdd(userNumber);
+        isNumberPositiveOrNegative(userNumber);
+        add100ToAnyNumber(userNumber)
+
+
     } else {
         alert("No Problem! Have great day!")
     }
 };
-// //===== Calling userNumber variable with function value
-// var userNumber = askUserForNumber(askForNumber);
-// console.log(userNumber);
+// ==== Uncomment to Test askUserForNumber function ====
+// console.log(askUserForNumber(askForNumber));
+
+// // === 3 alert functions Start===
+// == Function check if number is even or odd ===
+function isNumberEvenOrOdd(numberFromUser) {
+    if (numberFromUser % 2 === 0){
+        alert("Your number is an EVEN number!");
+
+    } else {
+        alert("Your number is an ODD number!");
+
+    }
+}
 //
-// // === 3 alerts Start===
-// function isNumberEvenOrOdd(numberFromUser) {
-//     if (numberFromUser % 2 === 0){
-//         alert("Your number is an EVEN number!");
-//         return "Your number is an EVEN number!"
-//
-//     } else if (numberFromUser % 1 === 0) {
-//         alert("Your number is an ODD number!");
-//         return "Your number is an ODD number!"
-//     }
-// }
-// isNumberEvenOrOdd(userNumber);
-//
-//
-// function isNumberPositiveOrNegative(numValue) {
-//     if(numValue < 0){
-//         alert("Your number is an negative number!");
-//         return "Your number is an negative number!";
-//     }   else if(numValue > 0){
-//         alert("Your number is an positive number!");
-//         return "Your number is an positive number!";
-//     }
-// }
+// === function checks if number is positive or negative ===
+function isNumberPositiveOrNegative(numValue) {
+    if(numValue < 0){
+        alert("Your number is an negative number!");
+        return "Your number is an negative number!";
+    }   else if(numValue > 0){
+        alert("Your number is an positive number!");
+        return "Your number is an positive number!";
+    }
+}
 // isNumberPositiveOrNegative(userNumber);
 //
+// === function add 100 to number===
+function add100ToAnyNumber(numInput) {
+    var usersNumberPlus100 = numInput + 100;
+    alert("Your number " + numInput + " " + "plus 100 is = " + usersNumberPlus100 );
+
+}
 // // === 3 alerts End===
 //
 //
