@@ -19,7 +19,7 @@
 /* ########################################################################## */
 
 function askUserForNumber() {
-    var askForNumber = confirm("Would you like to enter a number?");
+    // var askForNumber = confirm("Would you like to enter a number?");
 
 
     if (askForNumber === true){
@@ -55,26 +55,22 @@ function askUserForNumber() {
 
 
 // ======= Refactored code =======
-// var askForNumber = confirm("Would you like to enter a number?");
-// askUserForNumber(askForNumber);
-askUser();
-
 
 function askUser() {
-    var askForNumber = confirm("Would you like to enter a number?");
-    if(askForNumber === true){
-        var userNumber = +prompt("Enter your number here");
+    // var valueFromInput = confirm("Would you like to enter a number?");
+    if(valueFromInput === true){
+        var userNumber = +prompt("What number would you like to input?");
         isNumberEvenOrOdd(userNumber);
         isNumberPositiveOrNegative(userNumber);
-        add100ToAnyNumber(userNumber)
-
+        add100ToAnyNumber(userNumber);
 
     } else {
-        alert("No Problem! Have great day!")
+        alert("No Problem! Have great day!");
     }
-};
+}
 // ==== Uncomment to Test askUserForNumber function ====
 // console.log(askUserForNumber(askForNumber));
+// askUser();
 
 // // === 3 alert functions Start===
 // == Function check if number is even or odd ===
@@ -91,13 +87,17 @@ function isNumberEvenOrOdd(numberFromUser) {
 // === function checks if number is positive or negative ===
 function isNumberPositiveOrNegative(numValue) {
     if(numValue < 0){
-        alert("Your number is an negative number!");
+
         return "Your number is an negative number!";
-    }   else if(numValue > 0){
-        alert("Your number is an positive number!");
+    }   else if (numValue > 0){
+
         return "Your number is an positive number!";
+    }else {
+        return "Your number is not positive or negative"
     }
 }
+
+console.log(isNumberPositiveOrNegative(0));
 // isNumberPositiveOrNegative(userNumber);
 //
 // === function add 100 to number===

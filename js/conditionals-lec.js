@@ -19,12 +19,22 @@
 // ====== If else statement
 // var numberOfLives = 3;
 //
-// if (numberOfLives = 0){
-//     alert("Sorry! Game Over!")
-// }else{
-//
-// }
 
+
+
+function determineGameStatus(numberOfLives){
+
+    if (numberOfLives === 0){
+        return "Sorry! Game Over!";
+    }else{
+        return "Game Keep going"
+
+    }
+
+
+}
+
+console.log(determineGameStatus(7));
 // If Else statement practice
 // var lightStatus =  true;
 //
