@@ -72,7 +72,7 @@ function multiplyByFive() {
     }
 
 }
-multiplyByFive();
+// multiplyByFive();
 // Expected Output
 // 100
 // 95

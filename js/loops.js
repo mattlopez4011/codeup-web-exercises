@@ -29,6 +29,7 @@ function incrementByTwo(){
 
         // console.log("Cones sold per person " + conesSoldPerPerson + " & " + "Total cones to sell" + allCones);
     } while(allCones > 0);
+
     console.log("Yay! I sold them all! No more cones.");
     }
 
