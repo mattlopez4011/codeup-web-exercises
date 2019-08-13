@@ -66,14 +66,13 @@ function numPyramid() {
 // ===============================================
 
 function multiplyByFive() {
-    for (var i = 105; i > 5; i-= 5) {
-        var numByFive = i - 5;
-        console.log(numByFive);
+    for (var i = 100; i >= 5; i-= 5) {
+        console.log(i);
 
     }
 
 }
-// multiplyByFive();
+multiplyByFive();
 // Expected Output
 // 100
 // 95
