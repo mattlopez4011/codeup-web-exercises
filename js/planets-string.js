@@ -38,6 +38,9 @@
     var planetsWithLiTagsBetween = planetsArray.join('<li>');
     console.log(planetsWithLiTagsBetween);
 
+
+
 })();
+
 
 
