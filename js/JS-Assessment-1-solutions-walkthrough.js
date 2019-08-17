@@ -63,7 +63,7 @@ function isPositive(input) {
 }
 
 
-=================
+// =================
 // increment
 function increment(input) {
     if (isNumeric(input)){
@@ -83,7 +83,7 @@ function decrement(input) {
     }
 }
 
-================
+// ================
 // Square
 function decrement(input) {
     var numIsNumeric = isNumeric(input);
@@ -227,7 +227,7 @@ function multiply(num1, num2) {
 }
 
 
-=================
+// =================
 // sumOfSquares
 
 function sumOfSquares(num1, num2) {
