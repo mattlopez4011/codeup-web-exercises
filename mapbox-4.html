@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mapbox Mini Exercise 3</title>
+    <title>Mapbox Mini Exercise 4</title>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
-<h1>My third Mapbox Map!</h1>
+<h1>My fourth Mapbox Map!</h1>
 
 
 
@@ -29,36 +29,60 @@
         style: 'mapbox://styles/mapbox/streets-v9',
         zoom: 12,
         // center: [-122.420679, 37.772537] // San Francisco
-        // center: [-98.4916, 29.4252] // San Antonio
-        center: [-77.0369, 38.9072] // Washington D.C
+        center: [-98.4916, 29.4252] // San Antonio
+        // center: [-77.0369, 38.9072] // Washington D.C
 
     });
 
-    var marker = new mapboxgl.Marker()
-    // marker.setLngLat([-98.4916, 29.4260]); //Alamo location
-        .setLngLat([-77.0502, 38.8893]) //Lincoln Memorial location
-        .setPopup(lincolnMemorialPopup)
-        .addTo(map);
+    // var marker = new mapboxgl.Marker()
+    // // marker.setLngLat([-98.4916, 29.4260]); //Alamo location
+    //     .setLngLat([-77.0502, 38.8893]) //Lincoln Memorial location
+    //     .setPopup(lincolnMemorialPopup)
+    //     .addTo(map);
+    //
+    //
+    // // PopUp
+    // var lincolnMemorialPopup = new mapboxgl.Popup()
+    //     .setHTML("<p>Lincoln Memorial</p>");
+
+    // marker.setPopup(lincolnMemorialPopup);
+
+    // Geocode example
+    // geocode("Paris, TX", mapBoxToken).then(function(results) {
+    //     console.log(results);
+    //     map.jumpTo({center: results});
+    // })
+
+    // reverseGeocode
+    reverseGeocode({lat: 32.77, lng: -96.79}, mapBoxToken).then(function(results) {
+          // do something with results
+      });
 
 
-    // PopUp
-    var lincolnMemorialPopup = new mapboxgl.Popup()
-        .setHTML("<p>Lincoln Memorial</p>");
 
 
-    marker.setPopup(lincolnMemorialPopup);
-
-        // Geocode example
-    geocode("Paris", mapBoxToken).then(function(results) {
-        console.log(results);
+    geocode("Whitefish, Montana ", mapBoxToken).then(function(results) {
         map.jumpTo({center: results});
-    })
+    });
 
-</scripqq
+    reverseGeocode({lat: 21.2620, lng: -157.8060}, mapBoxToken).then(function(results) {
+        console.log(results);
+        // map.jumpTo({center: results});
+    });
+
+
+
+</script>
 
 
 
 </body>
 </html>
+
+
+<!--Mini - Exercise 4 (after geocoding)-->
+<!--Create an HTML file called mapbox-4.html -->
+<!--centered on San Antonio that programmatically is re-centered over Whitefish, Montana using the coordinates from geocoding the physical address.-->
+<!--Use reverse geocoding with the reverseGeocode function to determine what is at 21.2620 latitude and -157.8060 longitude. (edited) -->
 
 

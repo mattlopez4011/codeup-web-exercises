@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mapbox</title>
+    <title>Mapbox Mini exercise 1 </title>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
@@ -18,12 +18,16 @@
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 10,
+        zoom: 7,
         // center: [-122.420679, 37.772537] // San Francisco
         center: [-98.4916, 29.4252] // San Antonio
 
 
     });
+
+    var marker = new mapboxgl.Marker();
+            marker.setLngLat([-98.4916, 29.4260]); //Alamo location
+            marker.addTo(map);
 
 
     // map.jumpTo({center: [-98.4916, 29.4252]}); // San Antonio
@@ -37,12 +41,12 @@
     // }, 5000);
 
 
-    // ======= Justins solution
-    setTimeout(function () {
-        map.setStyle('mapbox://styles/mapbox/satellite-v9');
-        map.setZoom(3);
-
-    } , 5000)
+    // // ======= Justins solution
+    // setTimeout(function () {
+    //     map.setStyle('mapbox://styles/mapbox/satellite-v9');
+    //     map.setZoom(3);
+    //
+    // } , 5000)
 
 
     // var count = 0;

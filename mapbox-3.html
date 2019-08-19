@@ -33,13 +33,14 @@
     var marker = new mapboxgl.Marker()
     // marker.setLngLat([-98.4916, 29.4260]); //Alamo location
         .setLngLat([-77.0502, 38.8893]) //Lincoln Memorial location
+        .setPopup(lincolnMemorialPopup)
         .addTo(map);
 
 
     // PopUp
     var lincolnMemorialPopup = new mapboxgl.Popup()
-        .setHTML("<p>Lincoln Memorial</p>")
-        .addTo(map);
+        .setHTML("<p>Lincoln Memorial</p>");
+
 
     marker.setPopup(lincolnMemorialPopup)
 
