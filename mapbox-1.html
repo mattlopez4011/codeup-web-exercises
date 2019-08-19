@@ -7,6 +7,7 @@
 </head>
 <body>
 
+<h1>My first Mapbox Map!</h1>
 
 <div id='map' style='width: 100%; height: 70vh;'></div>
 
@@ -28,12 +29,20 @@
     // map.jumpTo({center: [-98.4916, 29.4252]}); // San Antonio
 
 
-    var intervalId = setInterval(function () {
-        map.jumpTo({zoom: 3});
-        map.setStyle('mapbox://styles/mapbox/satellite-v9');
-        clearInterval(intervalId);
+    // var intervalId = setInterval(function () {
+    //     map.jumpTo({zoom: 3});
+    //     map.setStyle('mapbox://styles/mapbox/satellite-v9');
+    //     clearInterval(intervalId);
+    //
+    // }, 5000);
 
-    }, 5000);
+
+    // ======= Justins solution
+    setTimeout(function () {
+        map.setStyle('mapbox://styles/mapbox/satellite-v9');
+        map.setZoom(3);
+
+    } , 5000)
 
 
     // var count = 0;
