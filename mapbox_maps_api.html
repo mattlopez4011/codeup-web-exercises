@@ -90,7 +90,7 @@ var favRestaurants = [
 
         // PopUp
         var popUp = new mapboxgl.Popup()
-            .setHTML(array.restaurantName + "<br>" + object.address + "<br>" + object.phone);
+            .setHTML(object.restaurantName + "<br>" + object.address + "<br>" + object.phone);
 
         marker.setPopup(popUp);
 
@@ -100,8 +100,8 @@ var favRestaurants = [
 
     favRestaurants.forEach(geoPen);
 
-    favRestaurants.forEach(function (rest) {
-        geoPen(rest)
+    favRestaurants.forEach(function (restaurant) {
+        geoPen(restaurant)
 
     })
 
