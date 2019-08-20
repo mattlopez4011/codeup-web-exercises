@@ -83,16 +83,16 @@ var favRestaurants = [
         // Marker
         var marker = new mapboxgl.Marker()
         // marker.setLngLat([-98.4916, 29.4260]); //Alamo location
-            .setLngLat(array.location)
-            .setPopup(favRestaurants)
+            .setLngLat(object.location)
+            // .setPopup(popUp)
             .addTo(map);
 
 
         // PopUp
-        var favRestaurants = new mapboxgl.Popup()
-            .setHTML(array.restaurantName + "<br>" + array.address + "<br>" + array.phone);
+        var popUp = new mapboxgl.Popup()
+            .setHTML(array.restaurantName + "<br>" + object.address + "<br>" + object.phone);
 
-        marker.setPopup(favRestaurants);
+        marker.setPopup(popUp);
 
     }
 
@@ -101,7 +101,7 @@ var favRestaurants = [
     favRestaurants.forEach(geoPen);
 
     favRestaurants.forEach(function (rest) {
-        geoPen()
+        geoPen(rest)
 
     })
 
