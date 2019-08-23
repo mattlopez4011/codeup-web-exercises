@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox Mini Exercise 2</title>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+<h1>My second Mapbox Map!</h1>
+
+
+
+
+<div id='map' style='width: 100%; height: 70vh;'></div>
+
+<script src="js/keys.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script>
+
+<script>
+    mapboxgl.accessToken = mapBoxToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 11,
+        // center: [-122.420679, 37.772537] // San Francisco
+        // center: [-98.4916, 29.4252] // San Antonio
+        center: [-77.0369, 38.9072] // Washington D.C
+
+    });
+
+    var marker = new mapboxgl.Marker()
+    // marker.setLngLat([-98.4916, 29.4260]); //Alamo location
+        .setLngLat([-77.0502, 38.8893]) //Lincoln Memorial location
+        .addTo(map);
+
+
+
+    var alamoPopup = new mapboxgl.Popup()
+        .setHTML("<p>Remember The Alamo!</p>")
+        .addTo(map)
+
+    marker.setPopup(alamoPopup)
+
+</script>
+
+
+
+</body>
+</html>
+
+
+
+<!--Mini - Exercise 2 (after markers)-->
+<!--Create an HTML file called mapbox-2.html-->
+<!--In this file, create a Mapbox map that shows Washington D.C. and with a marker on the Lincoln Memorial.-->

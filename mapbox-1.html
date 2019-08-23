@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox Mini exercise 1 </title>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+
+<h1>My first Mapbox Map!</h1>
+
+<div id='map' style='width: 100%; height: 70vh;'></div>
+
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script>
+<script src="js/keys.js"></script>
+<script>
+    mapboxgl.accessToken = mapBoxToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 7,
+        // center: [-122.420679, 37.772537] // San Francisco
+        center: [-98.4916, 29.4252] // San Antonio
+
+
+    });
+
+    var marker = new mapboxgl.Marker();
+            marker.setLngLat([-98.4916, 29.4260]); //Alamo location
+            marker.addTo(map);
+
+
+    // map.jumpTo({center: [-98.4916, 29.4252]}); // San Antonio
+
+
+    // var intervalId = setInterval(function () {
+    //     map.jumpTo({zoom: 3});
+    //     map.setStyle('mapbox://styles/mapbox/satellite-v9');
+    //     clearInterval(intervalId);
+    //
+    // }, 5000);
+
+
+    // // ======= Justins solution
+    // setTimeout(function () {
+    //     map.setStyle('mapbox://styles/mapbox/satellite-v9');
+    //     map.setZoom(3);
+    //
+    // } , 5000)
+
+
+    // var count = 0;
+    // var max = 1;
+    // var interval = 5000;
+    //
+    // var intervalId = setInterval(function () {
+    //     if (count >= max){
+    //         clearInterval(intervalId);
+    //         console.log('All done');
+    //         map.jumpTo({zoom: 4, center: [-98.4916, 29.4252]}); // San Antonio
+    //
+    //     }else {
+    //         count++;
+    //         console.log('repeating this line ' + count);
+    //         // map.jumpTo({center: [95.7129, 37.0902]});
+    //         map.zoom = 3;
+    //         // map.style = 'mapbox://styles/mapbox/satellite-v9';
+    //     }
+    //
+    // }, interval);
+
+
+</script>
+
+
+
+</body>
+</html>
