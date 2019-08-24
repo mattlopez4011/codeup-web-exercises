@@ -20,20 +20,34 @@
 //
 // });
 
-$(document).ready(function() {
+
+
+// Using jQuery, set the font-size of all li elements to 20px.
+$(document).ready(function () {
     $('li').css('font-size', '20px')
-
-    $('h1, p, li').css('color', 'yellow')
-
-    var alertH1 = $('h1').html();
-    console.log(alertH1);
-    alert(alertH1);
 
 });
 
 
-
-
 // Craft selectors that highlight all the h1, p, and li elements.
+$(document).ready(function () {
+    $('sel-3').css('color', 'blue')
+
+
+});
+
+// Create a jQuery statement to alert the contents of your h1 element(s).
+$(document).ready(function () {
+    var h1Elements = $('h1').html();
+    alert(h1Elements);
+
+
+});
+
+// Combine your selectors that highlight all the h1, p, and li elements.
+$(document).ready(function () {
+    $('h1, p, li').css('border', '1px dashed green')
+
+})
 
 
