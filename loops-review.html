@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Practice Functions Solutions</title>
+</head>
+<body>
+
+<h1>JS Assessment Review</h1>
+<ul>
+    <li>Example for Mapbox API Exercise is up on GitHub (Link already shared in slack).</li>
+    <li>Quiz after Lunch!</li>
+    <li>Assessment tomorrow! (Loops, Arrays, and Objects)</li>
+    <li>Thursday Tech Talk™: Mark Ross from H-E-B!</li>
+    <li>Monthly Coding Challenge - Coding Luau this Thursday after class at the Geekdom Event Center!</li>
+    <li>Learn To Code this Saturday - See Justin!</li>
+</ul>
+
+<script>
+    "use strict";
+
+    // ------------- PRACTICE 1
+    //TODO: Write a function, filterNumbers() that takes in an array of mixed data types and returns an array of only the numbers type in ascending order.
+    // 1) write a function -> filterNumbers
+    // 2) Accepts an array -> parameter -> bc its an array - we have to loop
+    // 3) Mixed Data type -> we need to check if this is a number
+    // 4) return an array -> we need an empty array to return.
+    // 5) ascending order -> .sort()
+
+    var testInput = ["fred", true, 5, 3];
+
+    function filterNumbers(arrayOfData) {
+        var newArray = [];
+        arrayOfData.forEach(function (data) {
+
+            if(typeof data === "number"){
+                // console.log(data);
+                newArray.push(data);
+
+            }
+
+        })
+
+        return newArray.sort();
+
+    }
+
+    // console.log(filterNumbers(testInput));
+
+
+    // ------------- PRACTICE 2
+    // TODO: Write a function, getOlder() that takes in array of dog objects and increases the value of the age properties by 1.
+   // 1) write a function -> getOlder()
+    // 2) takes an array -> parameter & we have to loop
+    // 3) .age + 1
+
+
+
+
+    var dogs = [
+        {
+            name: "Chompers",
+            breed: "Pug",
+            age: 7
+        },
+        {
+            name: "Freddy",
+            breed: "Lab",
+            age: 4
+        },
+        {
+            name: "Mr. Pig",
+            breed: "Mastif",
+            age: 10
+        }
+    ];
+
+    function getOlder(arrayOfDogs) {
+        // var newArray = [];
+
+        arrayOfDogs.forEach(function (dog) {
+            dog.age += 1
+            // console.log(dog.age);
+        });
+
+        return arrayOfDogs;
+
+    }
+
+    // console.log(getOlder(dogs));
+
+
+    // ------------- PRACTICE 3
+    //TODO: Write a function, washCars() that takes in a array of car objects and sets the boolean properties of isDirty to false
+    // 1) write a function -> washCars()
+    // 2) takes in array -> parameter & loop
+    // 3) .isDirty -> set to false
+
+    var cars = [
+        {
+            make: 'Volvo',
+            color: 'red',
+            year: 1996,
+            isDirty: true
+        },
+        {
+            make: 'Toyota',
+            color: 'black',
+            year: 2004,
+            isDirty: false
+        },
+        {
+            make: 'Ford',
+            color: 'white',
+            year: 2007,
+            isDirty: true
+        }
+    ];
+
+    function washCars(arrayCars) {
+
+        arrayCars.forEach(function (car) {
+            car.isDirty = false
+
+        });
+
+        return arrayCars
+
+    }
+
+    // console.log(washCars(cars));
+
+
+    // ------------- PRACTICE 4
+    // TODO: Write a function, adminList() that takes in an array of user objects and returns a count of all admins based on the isAdmin property. Refactor to return an array of admin-only user emails. Refactor again to return an array of user objects that are admins.
+    // 1) Write a function adminList()
+    // 2) Takes in array of users -> parameter & loop through users
+    // 3) Need a counter variable & increase count when isAdmin is true (in the loop)
+    // 4) Returns count of all admins
+
+
+    var users = [
+        {
+            isAdmin: true,
+            email: 'user1@email.com'
+        },
+        {
+            isAdmin: true,
+            email: 'user2@email.com'
+        },
+        {
+            isAdmin: false,
+            email: 'user3@email.com'
+        }
+    ];
+
+    // function adminList(arrayUsers) {
+    //     var counter = 0;
+    //
+    //     arrayUsers.forEach(function (user) {
+    //
+    //        if(user.isAdmin === true){
+    //            counter += 1;
+    //        }
+    //
+    //     });
+    //
+    //     return counter;
+    //
+    // }
+    //
+    // console.log(adminList(users));
+
+    // function adminList(arrayUsers) {
+    //     var adminEmails = [];
+    //
+    //     arrayUsers.forEach(function (user) {
+    //
+    //        if(user.isAdmin === true){
+    //            adminEmails.push(user.email)
+    //        }
+    //
+    //     });
+    //
+    //     return adminEmails;
+    //
+    // }
+    //
+    // console.log(adminList(users));
+
+    function adminList(arrayUsers) {
+        var admins = [];
+
+        arrayUsers.forEach(function (user) {
+
+            if(user.isAdmin === true){
+                admins.push(user)
+            }
+
+        });
+
+        return admins;
+
+    }
+
+    // console.log(adminList(users));
+
+
+    // ------------- PRACTICE 5
+    //TODO: Create a function, makeSandwichObjects() that takes in two array of strings, breads and fillings and returns an array of sandwichObjects that contain properties for bread and filling and values correspond to the same order of the two passed in arrays. Assume the two array inputs are the same length.
+    // 1) create function makeSandwichObjects()
+    // 2) takes in two array of strings -> 2 Parameters
+    // 3) Create an empty array of sandwichObjects
+    // 4) we need to loop through 1 of the arrays -> index will be important here
+    // 5) Create a loop that combines the bread and filling values into empty array sandwichObjects
+    // 5) we will need to create these sandwichObjects -> properties bread & filling
+
+
+
+    var breads  = [
+        "white",
+        "wheat",
+        "rhy",
+        "white"
+    ];
+
+    var fillings = [
+        "pb&j",
+        "ham",
+        "cheese steak",
+        "tuna"
+    ];
+
+    function makeSandwichObjects(arrayBreads, arrayFillings) {
+        var sandwichArray = [];
+
+        for (var i = 0; i < arrayBreads.length; i++){
+            var sandwichObjects = {};
+
+            sandwichObjects.bread = breads[i];
+            sandwichObjects.filling = fillings[i];
+
+            sandwichArray.push(sandwichObjects);
+
+        }
+        return sandwichArray
+
+    }
+
+    console.log(makeSandwichObjects(breads, fillings));
+
+
+</script>
+
+
+</body>
+</html>
