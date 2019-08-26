@@ -48,6 +48,6 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('h1, p, li').css('border', '1px dashed green')
 
-})
+});
 
 
