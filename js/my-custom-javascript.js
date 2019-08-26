@@ -54,6 +54,9 @@
 // });
 //
 
+// ========================
+// Mouse events with jQuery:
+
 $('h1').click(
     function () {
         $(this).css('background-color', 'lightgrey')
@@ -79,3 +82,4 @@ $('li').hover(
 
     }
 );
+
