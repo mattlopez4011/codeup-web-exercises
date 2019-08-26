@@ -22,32 +22,60 @@
 
 
 
-// Using jQuery, set the font-size of all li elements to 20px.
-$(document).ready(function () {
-    $('li').css('font-size', '20px')
+// // Using jQuery, set the font-size of all li elements to 20px.
+// $(document).ready(function () {
+//     $('li').css('font-size', '20px')
+//
+// });
+//
+//
+// // Craft selectors that highlight all the h1, p, and li elements.
+// $(document).ready(function () {
+//     $('sel-3').css('color', 'blue')
+//
+//
+// });
+//
+// // Create a jQuery statement to alert the contents of your h1 element(s).
+// $(document).ready(function () {
+//     var h1Elements = $('h1').html();
+//     alert(h1Elements);
+//
+//
+// });
+//
+// // Combine your selectors that highlight all the h1, p, and li elements.
+// $(document).ready(function () {
+//     // $('h1, p, li').css('border', '1px dashed green');
+//     $('h1, p, li').css('background-color', 'yellow');
+//
+//
+//
+// });
+//
 
-});
+$('h1').click(
+    function () {
+        $(this).css('background-color', 'lightgrey')
 
+    }
+);
 
-// Craft selectors that highlight all the h1, p, and li elements.
-$(document).ready(function () {
-    $('sel-3').css('color', 'blue')
+$('p').dblclick(
+    function () {
+        $(this).css('font-size', '18px')
 
+    }
+);
 
-});
+$('li').hover(
+    function () {
+        $(this).css('color', 'red')
 
-// Create a jQuery statement to alert the contents of your h1 element(s).
-$(document).ready(function () {
-    var h1Elements = $('h1').html();
-    alert(h1Elements);
+    },
 
+    function () {
+        $(this).css('color', 'black')
 
-});
-
-// Combine your selectors that highlight all the h1, p, and li elements.
-$(document).ready(function () {
-    $('h1, p, li').css('border', '1px dashed green')
-
-});
-
-
+    }
+);
