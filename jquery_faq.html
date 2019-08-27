@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Faq</title>
+
+    <style>
+        .invisible{
+            visibility: hidden;
+        }
+
+        button{
+            font-size: 15px;
+            padding: 5px;
+
+        }
+        .highlight{
+            background-color: lime;
+        }
+    </style>
+</head>
+<body>
+<h1>10 FAQs About National Parks.</h1>
+
+<dl>
+    <dt><strong>FAQ 1:</strong></dt>
+    <dd> <strong>There were 35 national monuments and parks in the service when it was created in 1916.</strong> Stephen Mather, a businessman who created the slogan “20 Mule Team” for a detergent company, was the first Park Service Director and played a big role in its expansion. It is part of the Department of the Interior.</dd>
+    <dt><strong>FAQ 2:</strong></dt>
+    <dd> <strong>Today, the Park Service has 140 national monuments and parks.</strong> And that’s not all: There are 128 historical parks or sites, 25 battlefields or military sites, 19 preserves, 18 recreation areas, 10 seashores, four parkways, four lakeshores, and two reserves.</dd>
+    <dt><strong>FAQ 3:</strong></dt>
+    <dd> <strong>The biggest park is Wrangell-St. Elias National Park and Preserve in Alaska.</strong> It was established in 1980, and it contains 13.2 million acres. It is the same size as Yosemite, Yellowstone and the country of Switzerland combined.</dd>
+    <dt><strong>FAQ 4:</strong></dt>
+    <dd> <strong>The smallest site is the Thaddeus Kosciuszko National Memorial in Philadelphia.</strong> It was established in 1972 and sits on 0.02 acres. Kosciuszko was a close friend of Thomas Jefferson’s who played an important role as a military engineer in the Revolutionary War.</dd>
+    <dt><strong>FAQ 5:</strong></dt>
+    <dd> <strong>The Park Service’s annual budget is $2.6 billion.</strong> But the service also estimates it supports 240,000 local jobs and generates $27 billion for the U.S. economy.</dd>
+    <dt><strong>FAQ 6:</strong></dt>
+    <dd> <strong>More than 307 million people visited Park Service locations in 2015.</strong> Back in 1920, Park Service sites were visited by 1 million people.</dd>
+    <dt><strong>FAQ 7:</strong></dt>
+    <dd> <strong>The Park Service has about 20,000 direct employees.</strong> They are helped each year by more than 246,000 volunteers who donate their time.</dd>
+    <dt><strong>FAQ 8:</strong></dt>
+    <dd> <strong>The highest point in the system is Denali (or Mount McKinley) at 20,320 feet.</strong> The lowest accessible point is Death Valley National Park, at 282 feet below sea level.</dd>
+    <dt><strong>FAQ 9:</strong></dt>
+    <dd> <strong>The National Park Service just doesn’t run parks.</strong> It helps out with dozens of affiliated sites, and it administers the National Register of Historic Places, National Heritage Areas, National Wild and Scenic Rivers, National Historic Landmarks, and National Trails.</dd>
+    <dt><strong>FAQ 10:</strong></dt>
+    <dd> <strong>There was a new National Monument for the big 100th anniversary in 2016.</strong> President Obama designated Katahdin Woods and Waters in Maine as a National Monument, to be administered by the National Park Service.</dd>
+
+</dl>
+
+<br>
+<button>Click me!</button>
+
+<script src="js/jquery-2.2.4.js"></script>
+<script>
+    $(document).ready(function () {
+        // Add a class to all dd elements named invisible.
+        $("dd").addClass('invisible');
+
+        // Create CSS that sets elements with the invisible class to visibility: hidden;.
+        // $('.invisible').css('visibility', 'hidden');
+
+        // Update the page with jQuery to add a link that toggles the class invisible on and off for all dd elements.
+        $('button').click(function(event) {
+            event.preventDefault();
+            $('dd').toggleClass('invisible');
+        });
+        // BONUS When any one dt is clicked, the element that was clicked should be highlighted.
+        $('dt').click(function () {
+            $(this).css('background', 'lime')
+
+
+        })
+
+    })
+
+
+
+</script>
+</body>
+</html>
