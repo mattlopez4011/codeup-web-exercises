@@ -17,6 +17,44 @@
         .highlight{
             background-color: lime;
         }
+        .border-box{
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .border{
+            border-style: solid;
+            border-width: 15px;
+            width: 250px;
+            height: 300px;
+            margin-right: 25px;
+
+        }
+
+        .btn-box{
+            display: flex;
+            justify-content: space-around;
+        }
+        .border-btn{
+            margin-right: 10px;
+            background: #007fff;
+            color: white;
+
+        }
+
+        .border-btn:hover {
+            background: linear-gradient(90deg, rgba(195,230,231,1) 0%, rgba(9,143,240,1) 48%, rgba(0,212,255,1) 100%);
+
+        }
+        .border img{
+            width: inherit;
+            height: inherit;
+        }
+        i{
+            color: white;
+        }
+
     </style>
 </head>
 <body>
@@ -47,9 +85,68 @@
 </dl>
 
 <br>
-<button>Click me!</button>
+<button class="button1">Click me!</button>
+<br><br>
+<!--================================================-->
+<!--Under the FAQ, add 3 unordered lists like above. Each list should contain a national park name in an h3 element, and a ul of 4 facts about the park.-->
 
+<!--Park 1-->
+<h3 id="national-parks-badlands">Badlands National Park</h3>
+<ul id="badlands-facts">
+    <li>is a 242,756 acre park </li>
+    <li>located in southwest South Dakota</li>
+    <li>The name 'badlands' is believed to originate from the Lakota people. They originally referred to the area encompassing Badlands National Park as 'land bad'. This is due to the rugged conditions of the area.</li>
+    <li>Snakes, including the prairie rattlesnake, are common in Badlands National Park.</li>
+</ul>
+<!--Park 2-->
+<h3 id="national-parks-enchantedRock">Enchanted Rock State Natural Area</h3>
+<ul id="enchantedRock-facts">
+    <li>Around 250,000 people visit the gleaming Enchanted Rock each year.</li>
+    <li>Hiking Enchanted Rock is like climbing the stairs of a 30- or 40-story building</li>
+    <li>Enchanted Rock covers approximately 640 acres</li>
+    <li>While this is just a legend, Tonkawa Indians believed ghosts inhabited the area because creaking sounds came from the dome. According to Texas Parks and Wildlife, the dome groans due to temperature changes.</li>
+
+</ul>
+<!--Park 3-->
+<h3 id="national-parks-everglades">Everglades National Park</h3>
+<ul id="everglades-facts">
+    <li>The Everglades receives an average of 60 inches of rain a year</li>
+    <li>1.5 million acres of subtropical wilderness in South Florida.</li>
+    <li>Everglades National Park is home to one of the largest wetlands in the world.</li>
+    <li>The Everglades is a natural region of tropical wetlands in the southern portion of the U.S. state of Florida.</li>
+
+</ul>
+
+<button class="button2">Click me!</button>
+
+<br>
+
+<div class="border-box">
+<!--    Frame 1-->
+    <div class="border frame1">
+        <img class="brightImg" id="bright" src="img/abstract-bright.jpg" alt="abstract bright picture">
+    </div>
+<!--    Frame 2-->
+    <div class="border frame2">
+        <img class="greenImg" src="img/abstract-green.jpg" alt="abstract green picture">
+    </div>
+<!--    Frame 3-->
+    <div class="border frame3">
+        <img class="redImg" src="img/abstract-red.jpg" alt="abstract red picture">
+    </div>
+</div>
+<br>
+<div class="btn-box">
+    <button class="border-btn border-btn-left"><i class="fi-swslxl-arrow-simple-wide"></i> Change Picture to </button>
+    <button class="border-btn border-btn-center">Randomly Swap Picture <i class="fi-swsuxl-reload"></i></button>
+    <button class="border-btn border-btn-right">Change Picture to <i class="fi-snsrxl-arrow-simple"></i></button>
+</div>
+
+
+
+<!--Javascript Start-->
 <script src="js/jquery-2.2.4.js"></script>
+<script defer src="https://friconix.com/cdn/friconix.js"></script>
 <script>
     $(document).ready(function () {
         // Add a class to all dd elements named invisible.
@@ -59,21 +156,105 @@
         // $('.invisible').css('visibility', 'hidden');
 
         // Update the page with jQuery to add a link that toggles the class invisible on and off for all dd elements.
-        $('button').click(function(event) {
+        $('.button1').click(function(event) {
             event.preventDefault();
             $('dd').toggleClass('invisible');
         });
         // BONUS When any one dt is clicked, the element that was clicked should be highlighted.
         $('dt').click(function () {
             $(this).css('background', 'lime')
+            // $(this).toggleClass(nac)
 
+        });
+
+        // ======================================================
+        // Traversing
+        // Create a button that, when clicked, makes the last li in each ul have a yellow background.
+        $('.button2').click(function () {
+            $('ul').each(function () {
+                $(this).children().last().css('background', 'yellow')
+
+            })
+        });
+
+        // When any h3 is clicked, the lis underneath it should be bolded. Use font-weight: bold to achieve this.
+        $('h3').click(function () {
+            $(this).next().children().css('font-weight', 'bold')
+        });
+
+        // When any list item is clicked, first li of the parent ul should have a font color of blue.
+        $('li').click(function () {
+            $(this).parent().children().first().css('color', 'blue')
+
+        });
+
+        // ==================
+        // Traversing Bonus
+
+        // Left button function
+        // The left frame swaps to the right and takes the image from the frame in the center.
+        $('.border-btn-left').click(function (e) {
+            e.preventDefault();
+            // var brightImg = $('.brightImg')[0].outerHTML; // Grab img element and puts into variable
+            // console.log(brightImg);
+            // $('.frame2').html(brightImg);
+            $('.greenImg').attr('src', 'img/abstract-bright.jpg'); // Replace current img with new img abstract-bright.
+            // Switch green img left replace blue img
+            $('.brightImg').attr('src', 'img/abstract-green.jpg');
+            // Set red img to go right (original spot)
+            $('.redImg').attr('src', 'img/abstract-red.jpg');
+        });
+
+        // Right button function
+        // The right frame swaps to the left and takes the image from the frame in the center.
+        $('.border-btn-right').click(function (e) {
+            e.preventDefault();
+            $('.greenImg').attr('src', 'img/abstract-red.jpg'); // Take the red abstract img and replaces the center green img.
+            $('.redImg').attr('src', 'img/abstract-green.jpg'); // Replacing the red img with the green abstract img.
+            // Set bright img to left (original spot)
+            $('.brightImg').attr('src', 'img/abstract-bright.jpg');
+        });
+
+        // Center button function
+        // The center frame swaps randomly to either the left or right.
+        $('.border-btn-center').click(function (e) {
+            e.preventDefault();
+            // Random number between 0 and 2 (inclusive)
+            var randomNum = Math.floor(Math.random() * 3);
+            console.log(randomNum);
+
+            if(randomNum === 0){
+                // Switch green img left replace blue img
+                $('.brightImg').attr('src', 'img/abstract-green.jpg');
+                // Move blue img to center and green img to left
+                $('.greenImg').attr('src', 'img/abstract-bright.jpg');
+                // Set red img to go right (original spot)
+                $('.redImg').attr('src', 'img/abstract-red.jpg');
+            }else if(randomNum === 1){
+                // Move green img to right, replace red img.
+                $('.redImg').attr('src', 'img/abstract-green.jpg');
+                // Move red img to center, replace green img.
+                $('.greenImg').attr('src', 'img/abstract-red.jpg');
+                // Set bright img to left (original spot)
+                $('.brightImg').attr('src', 'img/abstract-bright.jpg');
+            }else{
+                // Blue position 1
+                $('.brightImg').attr('src', 'img/abstract-bright.jpg');
+                // Green position 2
+                $('.greenImg').attr('src', 'img/abstract-green.jpg');
+                // Red position 3
+                $('.redImg').attr('src', 'img/abstract-red.jpg');
+            }
 
         })
 
-    })
 
+
+
+    }) // End of $(document).ready()
 
 
 </script>
 </body>
 </html>
+
