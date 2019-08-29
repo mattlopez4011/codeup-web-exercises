@@ -58,6 +58,15 @@
     </style>
 </head>
 <body>
+<!--Effects Exercise-->
+<div id="hideDiv">
+    <h1>Would you like to sign up for our newsletter?<span id="x">&#x274C;</span></h1>
+
+</div>
+
+<h2>Would you like to register for the site?</h2>
+
+
 <h1>10 FAQs About National Parks.</h1>
 
 <dl>
@@ -246,9 +255,39 @@
                 $('.redImg').attr('src', 'img/abstract-red.jpg');
             }
 
-        })
+        });
 
+// ===============================
+        // Effects Exercise
 
+        // At the top of the page, add a div with two elements, an h1 that reads "Would you like to sign up for our newsletter?" √
+        // and a span that has an 'x' in it. √
+        // When the 'x' is clicked, hide the entire div element. √
+        $('#x').click(function () {
+            $('#hideDiv').hide();
+
+        });
+
+        // The uls next to each h3 that contain facts about each park should start out hidden,
+        // and when the corresponding h3 is clicked,
+        // the display of the ul should be toggled with a sliding effect.
+        $('h3').next().hide(); // Hide the uls under the h3s
+        $('h3').click(function () {
+            $(this).next().slideToggle();
+            console.log("fire");
+
+        });
+
+        // After the user has been on the page for 8 seconds,
+        // an h2 should fade in that asks the user to register for the site.
+        // $('h2').hide(); // Hide the h2 when the page loads
+        // setTimeout(function(){
+        //     $('h2').fadeIn().css('background', 'yellow');
+        //
+        //     // alert("Would you like to register for the site?");
+        //     }, 8000);
+
+            $('h2').hide().delay(8000).fadeIn()
 
 
     }) // End of $(document).ready()
