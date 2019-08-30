@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax request</title>
+</head>
+<body>
+
+<h1 id="results"></h1>
+
+<script src="js/jquery-2.2.4.js"></script>
+<script>
+    // $.ajax('https://swapi.co/api/films/').done(function (object) {
+    //     console.log(object);
+    //     for (var i = 0; i < object.results.length; i++){
+    //         console.log(object);
+    //         // console.log(object.results[0]);
+    //         var filmData = object.results[i].title;
+    //         $('#results').append(filmData + "<br>");
+    //         console.log(filmData);
+    //
+    //     }
+    //
+    // });
+
+    // GET request
+// var settings = {
+//     data: {
+//         q:'Silly dog',
+//         limit: 10
+//     }
+// };
+
+    // POST request
+    // var settings = {
+    //     method: 'POST',
+    //     data: {
+    //         username:'matt',
+    //         password: "123"
+    //     }
+    // };
+    //
+    // $.ajax('https://hookb.in/JKqya7NyP7fzQzWp8jKq?username=withFunction', settings).done(function (data) {
+    //     console.log(data);
+    //     console.log("FIRE! 🔥");
+    //
+    // });
+
+
+    // single argument with .done(), .fail() and .always() methods
+    $.ajax({
+        "url": "https://swi.co/api/films",
+        "type": "GET",
+        "data": {
+            "search": "A New Hope"
+        }
+    }).done(function(data, status, jqXhr) {
+        // console.log(status);
+        console.log(data);
+        // console.log("The director of Star Wars: A New Hope is..." + data.results[0].director);
+    }).fail(function(jqXhr, status, error) {
+        console.log("Request failed! " + status);
+    }).always(function() {
+        console.log("Request made.");
+    });
+
+
+
+</script>
+</body>
+</html>

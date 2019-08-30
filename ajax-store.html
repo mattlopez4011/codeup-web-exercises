@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Store</title>
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="css/bootstrap-cerulean.min.css">
+    <style>
+        .card-img{
+            height: 300px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+
+<div class="card bg-dark text-white">
+    <img src="img/hardware.jpg" class="card-img" alt="...">
+    <div class="card-img-overlay d-flex justify-content-center align-items-center">
+        <h1 class="display-1 text-center">My Tool Store</h1>
+    </div>
+</div>
+
+<table class="table table-striped" id="products">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Categories</th>
+        </tr>
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+<br>
+<button class="btn btn-outline-primary">Refresh Table :-)</button>
+
+<!--Bootstrap 4 cdn -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--Ajax -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script>
+(function() {
+    "use strict";
+    // TODO: Create an ajax GET request for /data/inventory.json
+    // TODO: Take the data from inventory.json and append it to the products table
+    //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+    //             its contents and fields
+    //       HINT: You will want to target #insertProducts for your new HTML elements
+
+
+
+
+function updateTools(){
+    var table = '';
+
+    $.ajax({
+        url: 'data/inventory.json',
+        method: 'GET'
+    }).done(function (toolsArray) {
+        // console.log(toolsArray[0].title);
+    toolsArray.forEach(function (toolsArray) {
+        // console.log(toolsArray.quantity);
+        table += '<tr>' + '<td>' + toolsArray.title + '</td>' +
+            '<td>' + toolsArray.quantity + '</td>' +
+            '<td>' + toolsArray.price + '</td>' +
+            '<td>' + toolsArray.categories + '</td>' + '</tr>';
+
+    }); // End of forEach
+
+    $('#insertProducts').html(table); // Insert table variable into the html id insertProducts
+
+    }); // End of Ajax
+} //updateTools function
+    $('button').click(updateTools)
+})(); // End of updateTools function
+
+
+
+// function updateTools() {
+//     var table = "";
+//     $.get('data/inventory.json').done(function(data) {
+//         data.forEach(function(element) {
+//             table += "<tr>";
+//             table +=     "<td>" + element.title + "</td>";
+//             table +=     "<td>" + element.quantity + "</td>";
+//             table +=     "<td>" + element.price + "</td>";
+//             table +=     "<td>" + element.categories + "</td>";
+//             table += "</tr>";
+//             $('#insertProducts').html(table);
+//         }); //end of forEach()
+//     }); //end of .get()
+// }// end of updateTools()
+// $('button').click(updateTools);
+
+
+// ===================================================
+// Ajax Blog
+
+
+
+
+</script>
+
+</body>
+</html>
