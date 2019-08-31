@@ -80,22 +80,22 @@ function updateTools(){
 })(); // End of updateTools function
 
 
-
-// function updateTools() {
-//     var table = "";
-//     $.get('data/inventory.json').done(function(data) {
-//         data.forEach(function(element) {
-//             table += "<tr>";
-//             table +=     "<td>" + element.title + "</td>";
-//             table +=     "<td>" + element.quantity + "</td>";
-//             table +=     "<td>" + element.price + "</td>";
-//             table +=     "<td>" + element.categories + "</td>";
-//             table += "</tr>";
-//             $('#insertProducts').html(table);
-//         }); //end of forEach()
-//     }); //end of .get()
-// }// end of updateTools()
-// $('button').click(updateTools);
+// Alternative
+function updateTools() {
+    var table = "";
+    $.get('data/inventory.json').done(function(data) {
+        data.forEach(function(element) {
+            table += "<tr>";
+            table +=     "<td>" + element.title + "</td>";
+            table +=     "<td>" + element.quantity + "</td>";
+            table +=     "<td>" + element.price + "</td>";
+            table +=     "<td>" + element.categories + "</td>";
+            table += "</tr>";
+            $('#insertProducts').html(table);
+        }); //end of forEach()
+    }); //end of .get()
+}// end of updateTools()
+$('button').click(updateTools);
 
 
 // ===================================================
