@@ -3,33 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/bootstrap-sketchy.min.css">
-    <!--    mapBox CSS-->
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet' />
-    <!--Mapbox search plugin css for search bar-->
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<!--    MapBox API -Draggable Marker-->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.0/mapbox-gl.css' rel='stylesheet' />
+<!--    MapBox API - Geocoder for Search Bar-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.css' type='text/css' />
+<!--    Bootstrap Theme -->
+    <link rel="stylesheet" href="css/bootstrap-sketchy.min.css">
+
 <!--    My custom styles-->
     <style>
+        body{
+            background: linear-gradient(to bottom, #e1ffff 0%,#e1ffff 7%,#e1ffff 12%,#e6f8fd 30%,#c8eefb 54%,#bee4f8 75%,#b1d8f5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+        }
+
+        .navbar{
+            display: none;
+        }
+
         .jumbotron1{
             background: linear-gradient(to bottom, #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-
+            padding: 10px 0;
+            margin-bottom: 16px;
         }
 
         .currentTemp{
             display: inline;
+            font-size: 3.3em;
+            padding: 0 15px;
+            margin-top: 12px;
+        }
+
+        .currentSummary{
+            /*display: block;*/
+            /*width: 100%;*/
+            /*text-align: center;*/
+            margin-right: 10px;
+            font-size: 2.5em;
+            margin-top: 8px;
         }
 
         .weatherIcon{
             height: 150px;
         }
 
-        .currentTemp{
-            font-size: 4em;
-
-        }
         .mapBoxCard{
-            width: 50%;
+            max-width: 95vw;
+            width: 100%;
             height: 400px;
+            border: 3px solid black;
         }
         .currentWeatherCard{
             width: 50%;
@@ -39,8 +64,51 @@
             padding: 0px;
         }
 
+        /*Parent for 3day forecast cards*/
         .dailyForecast{
+            /*width: 100%;*/
+            flex-direction: row;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            background: linear-gradient(to bottom, #b7deed 0%,#80c8dd 51%,#b7deed 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            border-top: none;
+            padding-bottom: 35px;
+
+        }
+
+        .dailyTemp{
+            display: inline;
+            font-size: 1em;
+            padding: 0 15px;
+            margin-top: 12px;
+        }
+
+        .dailyHeading{
+            border: 2px solid black;
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(to bottom, #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        }
+
+        .jumbotron1-box1{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 300px;
+            margin-top: 15px;
+            background: #E8E8E8;
+        }
+
+        .locationName{
             width: 100%;
+            font-size: 3.5em;
+        }
+
+        .dailyHeader{
+            width: 100%;
+            text-align: center;
+            background: linear-gradient(to bottom, #87e0fd 0%,#53cbf1 40%,#05abe0 100%);
+
         }
     </style>
 </head>
@@ -75,196 +143,62 @@
 </nav>
 
 <!--First look data container-->
-<div class="jumbotron jumbotron1 d-flex flex-wrap justify-content-center ">
+<div class="jumbotron jumbotron1 d-flex flex-wrap justify-content-center align-items-center ">
 
 </div>
 
 <!--mapbox search bar-->
-<div class="search-container d-flex flex-wrap justify-content-center">
-    <!-- Search bar card-->
-    <div class="card bg-light mb-3" style="max-width: 20rem;">
-        <div class="card-header">Search bar</div>
-        <div class="card-body">
-            <h4 class="card-title">Search Bar</h4>
+<!--<div class="search-container d-flex flex-wrap justify-content-center">-->
+<!--    &lt;!&ndash; Search bar card&ndash;&gt;-->
+<!--    <div class="card bg-light mb-3" style="max-width: 20rem;">-->
+<!--        <div class="card-header">Search bar</div>-->
+<!--        <div class="card-body">-->
+<!--            <h4 class="card-title">Search Bar</h4>-->
 
-        </div>
-    </div>
-</div>
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 
 <!--Container for Map and current weather-->
 <div class="mapDataContainer d-flex flex-wrap justify-content-center">
     <!--Mapbox Card -->
-    <div class="mapBoxCard card bg-light mb-3" style="max-width: 400px;">
+    <div class="mapBoxCard card bg-light mb-3">
         <div class="col" id='map' style='width: 100vw; height: 100vh;'></div>
+    <!--<pre id='coordinates' class='coordinates'></pre>-->
     </div>
 
     <!-- Current weather data box-->
-    <div class="currentWeatherCard card bg-light mb-3" >
-        <div class="card-header">Weather Data Card</div>
-        <div class="card-body">
-            <h4 class="card-title">Light card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
+<!--    <div class="currentWeatherCard card bg-light mb-3" >-->
+<!--        <div class="card-header">Weather Data Card</div>-->
+<!--        <div class="card-body">-->
+<!--            <h4 class="card-title">Light card title</h4>-->
+<!--            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+<!--        </div>-->
+<!--    </div>-->
 </div>
 
 <!-- 3 day weather data box-->
-<div class="dailyForecast card bg-light mb-3" >
+<div class="dailyLocationName  text-left"></div>
+<div class="dailyForecast card bg-light" >
 
 </div>
 
-
-<!--Mapbox search plugin javascript for search bar-->
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
-<!--MapBox api-->
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script>
-<!--jquery-->
-<script src="js/jquery-2.2.4.js"></script>
 <!--keys-->
 <script src="js/keys.js"></script>
+<!--jquery-->
+<script src="js/jquery-2.2.4.js"></script>
+
 <!--Custom JS-->
+<script src="js/weather_map.js"></script>
+
+<!--Test script-->
 <script>
-   $(document).ready(function () {
-
-       function mapBoxApi() {
-           // MapBox
-           mapboxgl.accessToken = mapBoxToken;
-           var map = new mapboxgl.Map({
-               container: 'map',
-               style: 'mapbox://styles/mapbox/streets-v9',
-               zoom: 12,
-               // center: [-122.420679, 37.772537] // San Francisco
-               center: [-98.4916, 29.4252] // San Antonio
-               // center: [-77.0369, 38.9072] // Washington D.C
-               // center: [-97.7718784, 31.0810943] // Killeen, TX
-
-
-           });
-
-           var customData = {
-               "features": [
-                   {
-                       "type": "Feature",
-                       "properties": {
-                           "title": "Pinch Boil House",
-                           "address": "214 Broadway St, San Antonio, Tx 78205",
-                           "phone": "210-257-5152",
-                           "description": "Blah Blah Blah"
-                       },
-                       "geometry": {
-                           "coordinates": [
-                               -98.4958736,
-                               29.4259826
-
-                           ],
-                           "type": "Point"
-                       }
-                   }
-
-               ],
-               "type": "FeatureCollection"
-           };
-
-           // Search function
-           map.addControl(new MapboxGeocoder({
-               accessToken: mapboxgl.accessToken,
-               localGeocoder: forwardGeocoder,
-               zoom: 14,
-               placeholder: "Enter search e.g. Lincoln Park",
-               mapboxgl: mapboxgl
-           }));
-
-           function forwardGeocoder(query) {
-               var matchingFeatures = [];
-               for (var i = 0; i < customData.features.length; i++) {
-                   var feature = customData.features[i];
-                   // handle queries with different capitalization than the source data by calling toLowerCase()
-                   if (feature.properties.title.toLowerCase().search(query.toLowerCase()) !== -1) {
-                       // add a tree emoji as a prefix for custom data results
-                       // using carmen geojson format: https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
-                       feature['place_name'] = '🍻 ' + feature.properties.title;
-                       feature['center'] = feature.geometry.coordinates;
-                       feature['place_type'] = ['park'];
-                       matchingFeatures.push(feature);
-                   }
-               }
-               return matchingFeatures;
-           }
-
-       }
-
-       function firstLookWeather() {
-           var firstLookData = "";
-           $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936").done(function (data) {
-                              // Data in Jumbotron at top of page
-                var firstLookData = '';
-                firstLookData += '<div>';
-               firstLookData += '<div class="jumbotron1-box1 d-flex flex-wrap justify-content-center align-items-center">';
-                firstLookData += '<h1 class="locationName display-3 text-center">' + 'San Antonio Weather' + '</h1>';
-                firstLookData += '<img class="weatherIcon" src="icon/SVG/Sun.svg" alt="">';
-                firstLookData += '<div class="currentTemp">' + data.currently.temperature + '&#176;' + '</div>';
-               firstLookData += '</div>'; // end jumbotron1-box1
-                firstLookData += '</div>';
-                $('.jumbotron1').html(firstLookData);
 
 
 
-               // data.currently.forEach(function (data) {
-               //     console.log(data);
-               //
-               //     firstLookData += '<div>';
-               //     firstLookData += '<h1 class="locationName display-3 text-center">' + 'San Antonio Weather' + '</h1>';
-               //     firstLookData += '<img src="icon/SVG/Sun.svg" alt="">';
-               //     firstLookData += '<div class="weatherIcon">' + temperature + '</div>';
-               //     firstLookData += '</div>';
-               //     $('.jumbotron1').html(firstLookData)
-               //
-               // }); //end of forEach()
 
-           }); // end of .get()
-
-       } // end of first Look Weather function
-
-       function threeDayForcast() {
-           var threeDayForcastData = "";
-           $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/29.4241,-98.4936").done(function (data) {
-               console.log(data.daily.data);
-               // console.log(data.currently);
-               // Current weather temp
-            for(var i = 0; i < 3; i++){
-                console.log(data.daily.data[i]);
-
-                var icons =[
-                    // clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, partly-cloudy-night
-                    {
-                        weather:"clear-day",
-                        url:'icon/SVG/'
-                    }
-
-                    ];
-
-                // Daily forecast data
-                threeDayForcastData += '<div>';
-                threeDayForcastData += '<div class="jumbotron1-box1 d-flex flex-wrap justify-content-center align-items-center">';
-                threeDayForcastData += '<h1 class="locationName display-3 text-center">' + 'San Antonio Weather' + '</h1>';
-                threeDayForcastData += '<img class="weatherIcon" src="icon/SVG/Sun.svg" alt="">';
-                threeDayForcastData += '<div class="currentTemp">' + data.currently.temperature + '&#176;' + '</div>';
-                threeDayForcastData += '</div>'; // end jumbotron1-box1
-                threeDayForcastData += '</div>';
-                $('.dailyForecast').html(threeDayForcastData);
-
-            }
-
-           }); // end of .get()
-
-       } // end of first Look Weather function
-
-       firstLookWeather(); // Calling the firstLookWeather function
-       threeDayForcast(); // Calling threeDayForcast function
-       mapBoxApi() // Calling the mapBoxApi function
-   }) // End of document ready
 </script>
 </body>
 </html>
