@@ -1,4 +1,4 @@
-// $(document).ready(function () {
+$(document).ready(function () {
 
         // MapBox
             mapboxgl.accessToken = mapBoxToken;
@@ -16,31 +16,77 @@
             var marker = new mapboxgl.Marker({
                 draggable: true
             })
-                .setLngLat([-98.4916, 29.4252])
+                .setLngLat([-98.4916, 29.4252]) // Set San Antonio at initial reload
                 .addTo(map);
 
+
             // Geocoder code:
-            map.addControl(new MapboxGeocoder({
-                accessToken: mapboxgl.accessToken,
-                mapboxgl: mapboxgl
+            var geocoder = new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken
+                // mapboxgl: mapboxgl // Creates marker where you geocode
+            });
+
+            // Geocoder results
+            geocoder.on('result', function(result) {
+                var lat = result.result.center[1];
+                var long = result.result.center[0];
+                marker.setLngLat([long, lat]);
+                console.log(lat);
+                console.log(long);
+                console.log(result);
+                // $('h2').html(result.result.place_name);
+                weatherUpdate(); // Sends the weather api the updated lat and long.
+            });
+
+            // Add search bar to the map.
+            map.addControl(geocoder);
+
+            // Add geolocate control to the map.
+            map.addControl(new mapboxgl.GeolocateControl({
+                positionOptions: {
+                    enableHighAccuracy: true
+                },
+                trackUserLocation: true
             }));
+
+    //         function mapData(){
+    //             map.on('result', function (result) {
+    //                 console.log('These are results of map.on: ' + result);
+    //
+    //             });
+    //
+    //         }
+    // mapData(); // run mapData function
+
+
+
 
 
             var lngLat = [];
             var mapInput = '29.4252, -98.4916'; //Set to San Antonio when it first loads
             var mapInputLong = '-98.4916'; // Set Longitude for San Antonio for reverse geo code function
             var mapInputLat = '29.4252'; // Set Latitude for San Antonio for reverse geo code function
+            var geocoderResults = '';
 
-            // Updates the lat and long after the search input moves the map.
+            // map.on('results', function(results) {
+            //     console.log(results);
+            //     console.log('fire');
+            //     geocoderResults = results
+            // });
+
+    console.log(geocoderResults);
+
+    // Updates the lat and long after the search input moves the map.
             map.on("moveend", function () {
                 // console.log(map.getCenter());
-                marker.setLngLat(map.getCenter());
-                lngLat = map.getCenter();
+                // marker.setLngLat(map.getCenter()); // Sets the marker in the middle of the map after search.
+                lngLat = marker.getLngLat();
                 mapInput = lngLat.lat + ',' + lngLat.lng;
                 mapInputLong = lngLat.lng;
                 mapInputLat = lngLat.lat;
                 reverseGeocode(); // Call reverse Geocode function to return city and state names
                 weatherUpdate(); // Sends the weather api the updated lat and long.
+
             });
 
             function onDragEnd() {
@@ -83,25 +129,73 @@ var mapInputStateName = '';
 
 // Reverse geocoding- Covert long and lat to address
 function reverseGeocode(){
-    $.ajax("https://api.mapbox.com/geocoding/v5/mapbox.places/" + mapInputLong + "," + mapInputLat + ".json?access_token=pk.eyJ1IjoibWF0dDM2MDciLCJhIjoiY2p6aWhjYWFyMTZucDNjcTZxYnhjaTRjNyJ9.RegX-B-HGNFCIAH3vShlyw").done(function (data) {
-        console.log("Map BOX data: " + JSON.stringify(data));
-        console.log(data);
-        console.log(data.features[2].text); // Returns City name
-        console.log(data.features[3].text); // Returns State name
-        mapInputCityName = data.features[2].text;
-        mapInputStateName = data.features[3].text;
+    $.ajax("https://api.mapbox.com/geocoding/v5/mapbox.places/" + mapInputLong + "," + mapInputLat + ".json?access_token=" + mapBoxToken).done(function (data) {
+        // console.log("Map BOX data: " + JSON.stringify(data));
+        // console.log(data);
+        // console.log(data.features[2].text); // Returns City name
+        // console.log(data.features[3].text); // Returns State name
+        // mapInputCityName = data.features[2].text;
+        // mapInputStateName = data.features[3].text;
+
+        console.log(data.features);
+        // if( !data.features[2].text ){
+        //     console.log('no city');
+        //     return mapInputCityName = data.features[1].text;
+        // } else{
+        //     console.log('It has a city');
+        //     return mapInputCityName = data.features[2].text;
+        // }
+
+        if(data.features.length === 7){
+            console.log("7 objects in array");
+            mapInputCityName = data.features[2].text + ', '; // index of place = City name
+            mapInputStateName = data.features[5].text; // index of region = State name
+
+        }else if(data.features.length === 6){
+            console.log("6 objects in array");
+            mapInputCityName = data.features[3].text + ', '; // index of place = City name
+            mapInputStateName = data.features[4].text; // index of region = State name
+
+        }else if(data.features.length === 5){
+            console.log("5 objects in array");
+            mapInputCityName = data.features[2].text + ', '; // index of place = City name
+            mapInputStateName = data.features[3].text; // index of region = State name
+
+        }else if(data.features.length === 4){
+            console.log("4 objects in array");
+            mapInputCityName = data.features[1].text + ', '; // index of place = City name
+            mapInputStateName = data.features[2].text; // index of region = State name
+
+        }else if(data.features.length === 3){
+            console.log("3 objects in array");
+            mapInputCityName = data.features[0].text + ', '; // index of place = City name
+            mapInputStateName = data.features[1].text; // index of region = State name
+
+        }
+        else if(data.features.length === 2){
+            console.log("2 objects in array");
+            mapInputCityName = data.features[0].text + ', '; // index of place = City name
+            mapInputStateName = data.features[1].text; // index of region = State name
+
+        }else {
+            console.log("1 objects in array");
+            mapInputCityName = " "; // index of place = City name
+            mapInputStateName = data.features[0].text; // index of region = State name
+
+        }
 
     });
 
 }
 
-reverseGeocode(); // Calling function
+    reverseGeocode(); // Calling function
 
 //////////////////////////////////////////////// Start Update Weather Function
 
 function weatherUpdate() {
     // GET request Dark Sky API 🤖⏬
     $.ajax("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + darkSkyKey + "/" + mapInput).done(function (WeatherAPIData) {
+        console.log('weather api fired' + WeatherAPIData);
         // icons array
         var icons =[
             {
@@ -168,11 +262,12 @@ function weatherUpdate() {
             // Grabs API icon value and sends it into function to return the icon image path.
             iconImg += iconBasedOnWeather(data.currently.icon, icons );
             // console.log(iconImg);
+            console.log(data.currently.icon);
 
             var firstLookData = "";
             // Data in Jumbotron at top of page
             var firstLookData = '';
-            firstLookData += '<h1 class="locationName display-3 text-center order-0">' + mapInputCityName + ', ' + mapInputStateName +  ' Weather' + '</h1>';
+            firstLookData += '<h1 class="locationName display-3 text-center order-0">' + mapInputCityName + mapInputStateName +  ' Weather' + '</h1>';
             firstLookData += '<img class="weatherIcon order-1" src="'+iconImg+'" alt="">';
             firstLookData += '<h4 class="currentSummary order-1">' + data.currently.summary + '</h4>';
             firstLookData += '<div class="currentTemp order-1">' + Math.round(data.currently.temperature) + '&#176;' + '</div>';
@@ -235,12 +330,14 @@ function weatherUpdate() {
 
 
                 // 3 Day Daily forecast data
-                locationNameData    = '<div class="dailyHeading card-header bg-primary text-white">' + 'Daily Forecast: ' + mapInputCityName + ', ' + mapInputStateName + '</div>';
+                locationNameData    = '<div class="dailyHeading card-header bg-primary text-white">' + 'Daily Forecast: ' + mapInputCityName + mapInputStateName + '</div>';
                 threeDayForcastData += '<div class="jumbotron1-box1 card ">';
-                threeDayForcastData += '<div class="card-header dailyHeader">' + '<h3>' + dateObject.toDateString() + '</h3>' + '</div>';
+                threeDayForcastData += '<div class="card-header dailyHeader">' + '<h3>' + dateObject.toDateString().slice(0,10) + '</h3>' + '</div>';
                 threeDayForcastData += '<h3 class="highLowTemp  text-center mt-2">' + 'High: ' + Math.round(data.daily.data[i].apparentTemperatureHigh) + '&#176;' + ' / ' + 'Low: ' + Math.round(data.daily.data[i].apparentTemperatureLow) + '&#176;' + '</h3>';
                 threeDayForcastData += '<img class="weatherIcon" src= "'+iconImg+'" alt=" Weather Icon">';
                 threeDayForcastData += '<p class="dailyTemp">' + data.daily.data[i].summary  + '</p>';
+
+                threeDayForcastData += '<p class="dailyHumidity">'+ 'Chance of rain: ' + Math.round((data.daily.data[i].precipProbability * 100 )) + '%' + '</p>';
                 threeDayForcastData += '<p class="dailyHumidity">'+ 'Humidity: ' + Math.round((data.daily.data[i].humidity * 100 )) + '%' + '</p>';
                 threeDayForcastData += '<p class="dailyWindSpeed">'+ 'Wind Speed: ' + Math.round(data.daily.data[i].windSpeed) + ' MPH' + '</p>';
                 threeDayForcastData += '<p class="dailyPressure">'+ 'Pressure: ' + data.daily.data[i].pressure + '</p>';
@@ -261,9 +358,10 @@ function weatherUpdate() {
 
 
 
-weatherUpdate();
+    weatherUpdate(); // Call Get request for the weather
 
 
-// }); // End of document ready
+
+}); // End of document ready
 
 
