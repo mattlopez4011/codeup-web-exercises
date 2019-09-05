@@ -31,10 +31,6 @@ $(document).ready(function () {
                 var lat = result.result.center[1];
                 var long = result.result.center[0];
                 marker.setLngLat([long, lat]);
-                console.log(lat);
-                console.log(long);
-                console.log(result);
-                // $('h2').html(result.result.place_name);
                 weatherUpdate(); // Sends the weather api the updated lat and long.
             });
 
@@ -49,32 +45,13 @@ $(document).ready(function () {
                 trackUserLocation: true
             }));
 
-    //         function mapData(){
-    //             map.on('result', function (result) {
-    //                 console.log('These are results of map.on: ' + result);
-    //
-    //             });
-    //
-    //         }
-    // mapData(); // run mapData function
-
-
-
-
 
             var lngLat = [];
             var mapInput = '29.4252, -98.4916'; //Set to San Antonio when it first loads
             var mapInputLong = '-98.4916'; // Set Longitude for San Antonio for reverse geo code function
             var mapInputLat = '29.4252'; // Set Latitude for San Antonio for reverse geo code function
-            var geocoderResults = '';
 
-            // map.on('results', function(results) {
-            //     console.log(results);
-            //     console.log('fire');
-            //     geocoderResults = results
-            // });
-
-    console.log(geocoderResults);
+    // console.log(geocoderResults);
 
     // Updates the lat and long after the search input moves the map.
             map.on("moveend", function () {
@@ -100,7 +77,7 @@ $(document).ready(function () {
                 // console.log(lngLat);
                 reverseGeocode(); // Call reverse Geocode function to return city and state names
                 weatherUpdate(); // Call the darkSky api and update the weather based upon the markers location.
-                console.log(mapInput);
+
             }
             marker.on('dragend', onDragEnd);
             // console.log(marker.on('dragend', onDragEnd));
@@ -121,64 +98,49 @@ $(document).ready(function () {
 //////////////////// End of MapBox code
 
 //////////////////////////////////////////////Start Reverse Geocode
-// console.log(mapInputLong);
-// console.log(mapInputLat);
-// console.log(mapInput);
+
 var mapInputCityName = '';
 var mapInputStateName = '';
 
 // Reverse geocoding- Covert long and lat to address
 function reverseGeocode(){
     $.ajax("https://api.mapbox.com/geocoding/v5/mapbox.places/" + mapInputLong + "," + mapInputLat + ".json?access_token=" + mapBoxToken).done(function (data) {
-        // console.log("Map BOX data: " + JSON.stringify(data));
-        // console.log(data);
-        // console.log(data.features[2].text); // Returns City name
-        // console.log(data.features[3].text); // Returns State name
-        // mapInputCityName = data.features[2].text;
-        // mapInputStateName = data.features[3].text;
 
-        console.log(data.features);
-        // if( !data.features[2].text ){
-        //     console.log('no city');
-        //     return mapInputCityName = data.features[1].text;
-        // } else{
-        //     console.log('It has a city');
-        //     return mapInputCityName = data.features[2].text;
-        // }
+
 
         if(data.features.length === 7){
-            console.log("7 objects in array");
+            // console.log("7 objects in array");
             mapInputCityName = data.features[2].text + ', '; // index of place = City name
             mapInputStateName = data.features[5].text; // index of region = State name
 
         }else if(data.features.length === 6){
-            console.log("6 objects in array");
+            // console.log("6 objects in array");
             mapInputCityName = data.features[3].text + ', '; // index of place = City name
             mapInputStateName = data.features[4].text; // index of region = State name
 
         }else if(data.features.length === 5){
-            console.log("5 objects in array");
+            // console.log("5 objects in array");
             mapInputCityName = data.features[2].text + ', '; // index of place = City name
             mapInputStateName = data.features[3].text; // index of region = State name
 
         }else if(data.features.length === 4){
-            console.log("4 objects in array");
+            // console.log("4 objects in array");
             mapInputCityName = data.features[1].text + ', '; // index of place = City name
             mapInputStateName = data.features[2].text; // index of region = State name
 
         }else if(data.features.length === 3){
-            console.log("3 objects in array");
+            // console.log("3 objects in array");
             mapInputCityName = data.features[0].text + ', '; // index of place = City name
             mapInputStateName = data.features[1].text; // index of region = State name
 
         }
         else if(data.features.length === 2){
-            console.log("2 objects in array");
+            // console.log("2 objects in array");
             mapInputCityName = data.features[0].text + ', '; // index of place = City name
             mapInputStateName = data.features[1].text; // index of region = State name
 
         }else {
-            console.log("1 objects in array");
+            // console.log("1 objects in array");
             mapInputCityName = " "; // index of place = City name
             mapInputStateName = data.features[0].text; // index of region = State name
 
@@ -241,7 +203,7 @@ function weatherUpdate() {
 
         ];
 
-
+        // Jumbotron current weather data ☀️
         function firstLookWeather(data) {
             // console.log(data);
             // Displays icon based upon the icon property from API
@@ -262,7 +224,7 @@ function weatherUpdate() {
             // Grabs API icon value and sends it into function to return the icon image path.
             iconImg += iconBasedOnWeather(data.currently.icon, icons );
             // console.log(iconImg);
-            console.log(data.currently.icon);
+            // console.log(data.currently.icon);
 
             var firstLookData = "";
             // Data in Jumbotron at top of page
@@ -289,7 +251,7 @@ function weatherUpdate() {
 
 
 
-        } // end of first Look Weather function
+        } // end of first Look Weather function ☀️☀️☀️
 
         function threeDayForcast(data) {
             var threeDayForcastData = ""; // Data inside the 3 day forecast cards
@@ -301,15 +263,13 @@ function weatherUpdate() {
                 // console.log(data.daily.data[i]);
 
 
-
-
-                // Data and time object
+                // Data and time object ⏰
                 var dateObject = new Date(data.daily.data[i].time * 1000);
                 // console.log(dateObject.getUTCDay());
 
                 // threeDayForcastData += '<h6 class="  text-center">' + dateObject.toDateString() + '</h6>';
 
-                // Displays icon based upon the icon property from API
+                // 💎💎 Displays icon based upon the icon property from API💎💎
                 function iconBasedOnWeather(weatherIcon, iconsArray){
 
                     for (var a = 0; a < iconsArray.length; a++){
